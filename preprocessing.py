@@ -13,8 +13,8 @@ def preprocess(text):
         return re.sub(pattern, repl, text, flags=FLAGS)
     
     def allcaps(text):
-    text = text.group()
-    return text.lower() + " <allcaps>"
+        text = text.group()
+        return text.lower() + " <allcaps>"
 
     text = text.replace("#","<hashtag> ")
     
