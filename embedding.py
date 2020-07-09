@@ -1,10 +1,11 @@
-def get_word_index(text, vocab_size){
+from tensorflow.keras.preprocessing.text import Tokenizer
+
+def get_word_index(text, vocab_size):
     tokenizer = Tokenizer(num_words = vocab_size, oov_token = "<OOV>")
     tokenizer.fit_on_texts(text)
     return tokenizer.word_index
-}
 
-def embedding(text, vocab_size){
+def embedding(text, vocab_size)
     word_index = get_word_index(text, vocab_size)
     
     embedding_dim = 200
@@ -23,4 +24,3 @@ def embedding(text, vocab_size){
             embeddings_matrix[i] = embedding_vector
     
     return embeddings_matrix
-}
