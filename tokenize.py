@@ -5,12 +5,12 @@ from tensorflow.keras.preprocessing.sequence import pad_sequences
 
 def label_tokenize(train_labels, validation_labels):
     label_tokenizer = Tokenizer()
-    label_tokenizer.fit_on_texts(labels)
+    label_tokenizer.fit_on_texts(train_labels)
     training_label = np.array(label_tokenizer.texts_to_sequences(train_labels))
     validation_label = np.array(label_tokenizer.texts_to_sequences(validation_labels))
     return training_label, validation_label
 
-def tokenize(train_tweets, validation_tweets, vocab_size, max_length):
+def tokenize(train_tweets, validation_tweets, max_length, vocab_size):
     tokenizer = Tokenizer(num_words = vocab_size, oov_token = "<OOV>")
     tokenizer.fit_on_texts(train_tweets)
     train_padded = padded_sequence(train_tweets, tokenizer, max_length)
