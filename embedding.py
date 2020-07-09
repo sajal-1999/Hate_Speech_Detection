@@ -1,3 +1,4 @@
+import numpy as np
 from tensorflow.keras.preprocessing.text import Tokenizer
 
 def get_word_index(text, vocab_size):
@@ -5,12 +6,13 @@ def get_word_index(text, vocab_size):
     tokenizer.fit_on_texts(text)
     return tokenizer.word_index
 
-def embedding(text, vocab_size)
+def embedding(text, vocab_size, embedding_dim):
     word_index = get_word_index(text, vocab_size)
     
-    embedding_dim = 200
+#     embedding_dim = 200
     embeddings_index = {};
-    with open('glove.6B.200d.txt', errors='ignore') as f:
+    file_name = 'glove.6B.'+ str(embedding_dim) + 'd.txt'
+    with open(file_name, errors='ignore') as f:
         for line in f:
             values = line.split()
             word = values[0]
